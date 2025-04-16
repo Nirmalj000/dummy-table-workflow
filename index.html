@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Referrals Table Test</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    .clsWorklistAlternateRow {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <table id="dgReferrals">
+    <thead>
+      <tr>
+        <th>ReferralID</th>
+        <th>Type</th>
+        <th>Last Activity Date</th>
+        <th>From</th>
+        <th>Patient Name</th>
+        <th>Project Discharge Date</th>
+        <th>First Posting Date</th>
+        <th>Responded by Date</th>
+        <th>Assigned</th>
+        <th>Sites</th>
+        <th>Responded</th>
+        <th>Placement Info</th>
+        <th>Site Placed</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr data-row-id="R001">
+            <td>R001</td><td>Type A</td><td>2024-04-01</td><td>Dr. Smith</td><td>John Doe</td><td>2024-04-10</td><td>2024-04-03</td><td>2024-04-04</td><td>Alice</td><td>NY</td><td>Yes</td><td>Info A</td><td>Site 1</td>
+          </tr>
+          <tr data-row-id="R002">
+            <td>R002</td><td>Type B</td><td>2024-04-02</td><td>Dr. Lee</td><td>Jane Roe</td><td>2024-04-11</td><td>2024-04-04</td><td>2024-04-05</td><td>Bob</td><td>LA</td><td>No</td><td>Info B</td><td>Site 2</td>
+          </tr>
+          <tr data-row-id="R003">
+            <td>R003</td><td>Type C</td><td>2024-04-03</td><td>Dr. Kim</td><td>Mike Dee</td><td>2024-04-12</td><td>2024-04-05</td><td>2024-04-06</td><td>Carol</td><td>TX</td><td>Yes</td><td>Info C</td><td>Site 3</td>
+          </tr>
+    </tbody>
+  </table>
+</body>
+</html>
