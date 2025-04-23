@@ -17,14 +17,16 @@
     .pagination {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
     }
     .pagination button {
       padding: 6px 12px;
       cursor: pointer;
     }
-    .hidden {
-      display: none;
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -53,17 +55,16 @@
   </table>
 
   <div class="pagination">
-    <button onclick="changePage(1)">1</button>
-    <button onclick="changePage(2)">2</button>
-    <button onclick="changePage(3)">3</button>
-    <button onclick="changePage(4)">4</button>
-    <button onclick="changePage(5)">5</button>
+    <button id="prevBtn" onclick="changePage(currentPage - 1)">Previous</button>
+    <span id="pageNumbers"></span>
+    <button id="nextBtn" onclick="changePage(currentPage + 1)">Next</button>
   </div>
 
   <script>
     const data = [];
     const rowsPerPage = 10;
     const totalPages = 5;
+    let currentPage = 1;
 
     for (let page = 1; page <= totalPages; page++) {
       for (let i = 1; i <= rowsPerPage; i++) {
@@ -101,14 +102,33 @@
         });
         tbody.appendChild(tr);
       });
+
+      // Update pagination buttons
+      document.getElementById('prevBtn').disabled = page === 1;
+      document.getElementById('nextBtn').disabled = page === totalPages;
+
+      // Update page number buttons
+      const pageContainer = document.getElementById('pageNumbers');
+      pageContainer.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.onclick = () => changePage(i);
+        if (i === page) {
+          btn.disabled = true;
+        }
+        pageContainer.appendChild(btn);
+      }
     }
 
     function changePage(pageNum) {
-      renderTable(pageNum);
+      if (pageNum < 1 || pageNum > totalPages) return;
+      currentPage = pageNum;
+      renderTable(currentPage);
     }
 
-    // Initial page
-    changePage(1);
+    // Initial render
+    renderTable(currentPage);
   </script>
 </body>
 </html>
